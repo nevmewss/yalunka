@@ -138,6 +138,73 @@ document.addEventListener("click", (e) => {
     searchInput.value = "";
   }
 });
+const cartBtn = document.querySelector(".cart-btn");
+const cartPopup = document.querySelector(".cart-popup");
+const cartClose = document.querySelector(".cart-popup__close");
+const removeButtons = document.querySelectorAll(".remove-item");
+const cartCount = document.querySelector(".cart-count");
+const cartTotal = document.querySelector(".cart-total");
+cartBtn.addEventListener("click", () => {
+  cartPopup.classList.add("active");
+});
+cartClose.addEventListener("click", () => {
+  cartPopup.classList.remove("active");
+});
+window.addEventListener("click", (e) => {
+  if (e.target === cartPopup) {
+    cartPopup.classList.remove("active");
+  }
+});
+removeButtons.forEach((btn) => {
+  btn.addEventListener("click", function() {
+    const item = this.closest(".cart-item");
+    item.remove();
+    updateCart();
+  });
+});
+function updateCart() {
+  const items = document.querySelectorAll(".cart-item");
+  let total = 0;
+  items.forEach((item) => {
+    total += parseInt(item.querySelector("strong").innerText);
+  });
+  cartCount.innerText = items.length;
+  cartTotal.innerText = `Всього: ${total} ₴`;
+  if (!items.length) {
+    document.querySelector(".cart-items").innerHTML = '<p class="cart-empty">Корзина пуста</p>';
+  }
+}
+const checkoutBtn = document.querySelector(".cart-checkout");
+const orderPopup = document.querySelector(".order-popup");
+const orderClose = document.querySelector(".order-popup__close");
+const paymentRadios = document.querySelectorAll('input[name="payment"]');
+const cardSection = document.querySelector(".order-card");
+checkoutBtn.addEventListener("click", () => {
+  cartPopup.classList.remove("active");
+  orderPopup.classList.add("active");
+});
+orderClose.addEventListener("click", () => {
+  orderPopup.classList.remove("active");
+});
+window.addEventListener("click", (e) => {
+  if (e.target === orderPopup) {
+    orderPopup.classList.remove("active");
+  }
+});
+paymentRadios.forEach((radio) => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "card") {
+      cardSection.style.display = "block";
+    } else {
+      cardSection.style.display = "none";
+    }
+  });
+});
+const orderSubmit = document.querySelector(".order-submit");
+orderSubmit.addEventListener("click", () => {
+  alert("Ваше замовлення відправлене! Ми зв’яжемося з вами для підтвердження.");
+  orderPopup.classList.remove("active");
+});
 class DynamicAdapt {
   constructor() {
     this.type = "max";

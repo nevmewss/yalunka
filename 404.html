@@ -6,8 +6,8 @@
 		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
 		<title>Головна</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477669496"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477669496">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477936866"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477936866">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -151,50 +151,6 @@
 					</div>
 				</div>
 			</div>
-			<script>
-        const cartBtn = document.querySelector(".cart-btn");
-        const cartPopup = document.querySelector(".cart-popup");
-        const cartClose = document.querySelector(".cart-popup__close");
-        const removeButtons = document.querySelectorAll(".remove-item");
-        const cartCount = document.querySelector(".cart-count");
-        const cartTotal = document.querySelector(".cart-total");
-
-        cartBtn.addEventListener("click", () => {
-          cartPopup.classList.add("active");
-        });
-
-        cartClose.addEventListener("click", () => {
-          cartPopup.classList.remove("active");
-        });
-
-        window.addEventListener("click", (e) => {
-          if (e.target === cartPopup) {
-            cartPopup.classList.remove("active");
-          }
-        });
-
-        removeButtons.forEach((btn) => {
-          btn.addEventListener("click", function () {
-            const item = this.closest(".cart-item");
-            item.remove();
-            updateCart();
-          });
-        });
-
-        function updateCart() {
-          const items = document.querySelectorAll(".cart-item");
-          let total = 0;
-          items.forEach((item) => {
-            total += parseInt(item.querySelector("strong").innerText);
-          });
-          cartCount.innerText = items.length;
-          cartTotal.innerText = `Всього: ${total} ₴`;
-          if (!items.length) {
-            document.querySelector(".cart-items").innerHTML = ' [object Object]
-            ';
-          }
-        }
-			</script>
 			<!-- Попап оформлення замовлення -->
 			<div class="order-popup">
 				<div class="order-popup__content">
@@ -229,48 +185,6 @@
 					<button class="order-submit">Підтвердити замовлення</button>
 				</div>
 			</div>
-			<script>
-      const checkoutBtn = document.querySelector(".cart-checkout");
-      const orderPopup = document.querySelector(".order-popup");
-      const orderClose = document.querySelector(".order-popup__close");
-      const paymentRadios = document.querySelectorAll('input[name="payment"]');
-      const cardSection = document.querySelector(".order-card");
-
-      // Відкрити попап замовлення
-      checkoutBtn.addEventListener("click", () => {
-        cartPopup.classList.remove("active");
-        orderPopup.classList.add("active");
-      });
-
-      // Закрити попап замовлення
-      orderClose.addEventListener("click", () => {
-        orderPopup.classList.remove("active");
-      });
-
-      window.addEventListener("click", (e) => {
-        if (e.target === orderPopup) {
-          orderPopup.classList.remove("active");
-        }
-      });
-
-      // Перемикач способів оплати
-      paymentRadios.forEach((radio) => {
-        radio.addEventListener("change", () => {
-          if (radio.value === "card") {
-            cardSection.style.display = "block";
-          } else {
-            cardSection.style.display = "none";
-          }
-        });
-      });
-
-      // Підтвердження замовлення
-      const orderSubmit = document.querySelector(".order-submit");
-      orderSubmit.addEventListener("click", () => {
-        alert("Ваше замовлення відправлене! Ми зв’яжемося з вами для підтвердження.");
-        orderPopup.classList.remove("active");
-      });
-		</script>
 			<main class="page">
 				<div class="page__nav">
 					<div class="page__container">
