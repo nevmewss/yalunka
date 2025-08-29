@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<link rel="shortcut icon" href="assets/img/favicon.ico">
+		<title>Блог</title>
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477669495"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477669495">
+	</head>
+	<body>
+		<div class="wrapper">
+			<header data-fls-header="" class="header">
+				<div class="header__container">
+					<a href="index.html" class="header__logo">
+						<picture>
+							<source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp">
+							<img alt="#" src="./assets/img/logo.webp">
+						</picture>
+					</a>
+					<div class="header__nav">
+						<div class="header__top top-header">
+							<div data-fls-dynamic=".menu__body, 992" class="top-header__social">
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Facebook" src="./assets/img/social/fb.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Instagram" src="./assets/img/social/inst.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Telegram" src="./assets/img/social/tg.webp">
+									</picture>
+								</a>
+							</div>
+							<div data-fls-dynamic=".menu__body, 768" class="top-header__phone">
+								<a href="#" class="top-header__call">
+									<picture>
+										<img alt="Call" src="./assets/img/header/call.webp">
+									</picture>
+								</a>
+								<a href="tel:+380970457447" class="top-header__phone">+38 097 045 7447</a>
+							</div>
+						</div>
+						<div class="header__bottom header-bot">
+							<div class="header-bot__nav">
+								<div class="header__menu menu">
+									<nav class="menu__body">
+										<ul class="menu__list">
+											<li class="menu__item">
+												<a href="index.html" class="menu__link">Головна</a>
+											</li>
+											<li class="menu__item menu_parent">
+												<a href="catalog.html" class="menu__link">Каталог</a>
+												<div class="menu__sub sub-menu__body">
+													<ul class="sub-menu">
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Гірлянди</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Світлодіодні сітки</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Ялинки</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Освітлення фасадів</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Акції</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Блог</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Фотогалерея</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Оплата та доставка</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Документи</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Контакти</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="top-header__icons">
+								<div data-fls-dynamic=".menu__body, 992" class="top-header__search-box">
+									<input type="text" class="top-header__input" placeholder="Пошук...">
+									<a href="#" class="top-header__icon top-header__search">
+										<img src="./assets/img/header/search.svg" alt="Search">
+									</a>
+								</div>
+								<div class="search-results" id="searchResults"></div>
+								<a href="#" class="top-header__icon top-header__person">
+									<picture>
+										<img alt="Cabinet" src="./assets/img/header/person.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__icon top-header__cart cart-btn">
+									<picture>
+										<img alt="Cart" src="./assets/img/header/cart.webp">
+									</picture>
+									<span class="header__count">1</span>
+								</a>
+								<button type="button" data-fls-menu="" class="menu__icon icon-menu">
+									<span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- Попап корзины -->
+			<div class="cart-popup">
+				<div class="cart-popup__content">
+					<button class="cart-popup__close">&times;</button>
+					<h2>Ваша корзина</h2>
+					<div class="cart-items">
+						<div class="cart-item">
+							<span>Гірлянда LED 10м</span>
+							<strong>350 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+						<div class="cart-item">
+							<span>Набір куль 20 шт.</span>
+							<strong>480 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+						<div class="cart-item">
+							<span>Свічки ароматичні</span>
+							<strong>120 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+					</div>
+					<div class="cart-footer">
+						<span class="cart-total">Всього: 950 ₴</span>
+						<button class="cart-checkout">Оформити замовлення</button>
+					</div>
+				</div>
+			</div>
+			<script>
+        const cartBtn = document.querySelector(".cart-btn");
+        const cartPopup = document.querySelector(".cart-popup");
+        const cartClose = document.querySelector(".cart-popup__close");
+        const removeButtons = document.querySelectorAll(".remove-item");
+        const cartCount = document.querySelector(".cart-count");
+        const cartTotal = document.querySelector(".cart-total");
+
+        cartBtn.addEventListener("click", () => {
+          cartPopup.classList.add("active");
+        });
+
+        cartClose.addEventListener("click", () => {
+          cartPopup.classList.remove("active");
+        });
+
+        window.addEventListener("click", (e) => {
+          if (e.target === cartPopup) {
+            cartPopup.classList.remove("active");
+          }
+        });
+
+        removeButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const item = this.closest(".cart-item");
+            item.remove();
+            updateCart();
+          });
+        });
+
+        function updateCart() {
+          const items = document.querySelectorAll(".cart-item");
+          let total = 0;
+          items.forEach((item) => {
+            total += parseInt(item.querySelector("strong").innerText);
+          });
+          cartCount.innerText = items.length;
+          cartTotal.innerText = `Всього: ${total} ₴`;
+          if (!items.length) {
+            document.querySelector(".cart-items").innerHTML = ' [object Object]
+            ';
+          }
+        }
+			</script>
+			<!-- Попап оформлення замовлення -->
+			<div class="order-popup">
+				<div class="order-popup__content">
+					<button class="order-popup__close">&times;</button>
+					<h2>Оформлення замовлення</h2>
+					<!-- Способи оплати -->
+					<div class="order-section">
+						<h3>Спосіб оплати:</h3>
+						<label>
+							<input type="radio" name="payment" value="cod" checked>
+							При отриманні
+						</label>
+						<label>
+							<input type="radio" name="payment" value="card">
+							На картку
+						</label>
+						<p class="payment-info">Без передоплати на картку замовлення не буде відправлено.</p>
+					</div>
+					<!-- Дані для відправки -->
+					<div class="order-section">
+						<h3>Дані для відправки:</h3>
+						<input type="text" name="name" placeholder="ПІБ" required>
+						<input type="tel" name="phone" placeholder="Телефон" required>
+						<input type="text" name="city" placeholder="Місто" required>
+						<input type="text" name="branch" placeholder="Відділення Нової Пошти" required>
+					</div>
+					<!-- Дані картки -->
+					<div class="order-section order-card" style="display: none">
+						<h3>Дані картки для оплати:</h3>
+						<h3>4444 4444 4444 4444</h3>
+					</div>
+					<button class="order-submit">Підтвердити замовлення</button>
+				</div>
+			</div>
+			<script>
+      const checkoutBtn = document.querySelector(".cart-checkout");
+      const orderPopup = document.querySelector(".order-popup");
+      const orderClose = document.querySelector(".order-popup__close");
+      const paymentRadios = document.querySelectorAll('input[name="payment"]');
+      const cardSection = document.querySelector(".order-card");
+
+      // Відкрити попап замовлення
+      checkoutBtn.addEventListener("click", () => {
+        cartPopup.classList.remove("active");
+        orderPopup.classList.add("active");
+      });
+
+      // Закрити попап замовлення
+      orderClose.addEventListener("click", () => {
+        orderPopup.classList.remove("active");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === orderPopup) {
+          orderPopup.classList.remove("active");
+        }
+      });
+
+      // Перемикач способів оплати
+      paymentRadios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          if (radio.value === "card") {
+            cardSection.style.display = "block";
+          } else {
+            cardSection.style.display = "none";
+          }
+        });
+      });
+
+      // Підтвердження замовлення
+      const orderSubmit = document.querySelector(".order-submit");
+      orderSubmit.addEventListener("click", () => {
+        alert("Ваше замовлення відправлене! Ми зв’яжемося з вами для підтвердження.");
+        orderPopup.classList.remove("active");
+      });
+		</script>
+			<main class="page">
+				<div class="page__nav">
+					<div class="page__container">
+						<a href="index.html" class="page__prev">Головна /</a>
+						<span class="page__current">Блог</span>
+					</div>
+				</div>
+				<section class="page__blog blog">
+					<div class="blog__container">
+						<h2 class="blog__title">БЛОГ</h2>
+						<div class="blog__row">
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+							<div class="blog__column">
+								<a href="#" class="blog__item">
+									<div class="blog__img">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/placeholder.webp">
+										</picture>
+									</div>
+									<div class="blog__content">
+										<div class="blog__date">20.11.2023</div>
+										<h3 class="blog__subtitle">Як обрати ідеальну ялинку для вашого дому</h3>
+										<div class="blog__text">
+											Вибір ялинки для святкового декору може бути захоплюючим, але й водночас складним
+                                завданням. Ось кілька порад, які допоможуть вам обрати ідеальну ялинку для вашого дому.
+										</div>
+										<a href="#" class="blog__button">Читати</a>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<footer data-fls-footer="" class="footer">
+				<div class="footer__container">
+					<div class="footer__info info-footer">
+						<a href="#" class="footer__logo">
+							<picture>
+								<source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp">
+								<img alt="Logo" src="./assets/img/logo.webp">
+							</picture>
+						</a>
+						<div class="info-footer__text">
+							Виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та підвісних світлодіодних
+                сіток та стовбурових ялинок ексклюзивних розмірів
+						</div>
+						<div class="info-footer__social">
+							<a href="#" class="footer__link">
+								<picture>
+									<img alt="Facebook" src="./assets/img/social/fb.webp">
+								</picture>
+							</a>
+							<a href="#" class="footer__link">
+								<picture>
+									<img alt="Instagram" src="./assets/img/social/inst.webp">
+								</picture>
+							</a>
+							<a href="#" class="footer__link">
+								<picture>
+									<img alt="Telegram" src="./assets/img/social/tg.webp">
+								</picture>
+							</a>
+						</div>
+					</div>
+					<div class="footer__nav nav-footer">
+						<h2 class="footer__title">Інформація</h2>
+						<nav class="nav-footer__menu menu-footer">
+							<ul class="menu-footer__list">
+								<li class="menu-footer__item">
+									<a href="index.php" class="menu-footer__link">Головна</a>
+								</li>
+								<li class="menu-footer__item menu_parent">
+									<a href="https://yalunka.market/catalog/" class="menu-footer__link">Каталог</a>
+									<ul class="menu-footer__sub sub-menu">
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/girlyandy/" class="sub-menu__link">Гірлянди</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/3d-fontany/" class="sub-menu__link">3D Фонтани</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/figury-arky-ta-instalyacziyi/" class="sub-menu__link">Фігури, арки та інсталяції</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/igrashky/" class="sub-menu__link">Іграшки</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/makivka/" class="sub-menu__link">Маківка</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/ogorozha/" class="sub-menu__link">Огорожа</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/promyslove-zabezpechennya/" class="sub-menu__link">Промисловe забезпечення</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/rgb-kuli/" class="sub-menu__link">RGB Кулі</a>
+										</li>
+										<li class="sub-menu__item">
+											<a href="https://yalunka.market/product-category/gabiony/" class="sub-menu__link">Габіони</a>
+										</li>
+									</ul>
+								</li>
+								<li class="menu-footer__item">
+									<a href="https://yalunka.market/product-category/akcziyi/" class="menu-footer__link">Акції</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="index.php" class="menu-footer__link">Фотогалерея</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="https://yalunka.market/oplata-ta-dostavka/" class="menu-footer__link">Оплата та доставка</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="https://yalunka.market/dokumenty/" class="menu-footer__link">Документи</a>
+								</li>
+								<li class="menu-footer__item">
+									<a href="https://yalunka.market/kontakty/" class="menu-footer__link">Контакти</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="footer__contact contact-footer">
+						<h2 class="footer__title">Контакти</h2>
+						<div class="contact-footer__mob">
+							<a href="tel:+380970457447" class="contact-footer__tel">0970457447</a>
+						</div>
+						<div class="contact-footer__email">
+							<a href="mailto:svstlosvyata@gmail.com" class="contact-footer__mail">svstlosvyata@gmail.com</a>
+						</div>
+					</div>
+					<div class="footer__adress adress-footer">
+						<h2 class="footer__title">Адреса</h2>
+						<div class="adress-footer__adress">46001 Тернопіль вул. Грушевського 23</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

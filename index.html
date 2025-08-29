@@ -5,60 +5,279 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
-		<title>Home Page</title>
-		<script type="module" crossorigin="" src="./js/index.min.js?v=1755933106996"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1755933106996">
+		<title>Головна</title>
+		<script type="module" crossorigin="" src="./js/index.min.js?v=1756477669497"></script>
+		<link rel="modulepreload" crossorigin="" href="./js/app.min.js">
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477669497">
+		<link rel="stylesheet" crossorigin="" href="./css/index.min.css?v=1756477669497">
 	</head>
 	<body>
 		<div class="wrapper">
 			<header data-fls-header="" class="header">
-				<!--
-<div class="header__container">
-<a href="index.html" class="header__logo"><img src="@img/logo.png" alt="#"></a>
-<div class="header__nav">
-<div class="header__top top-header">
-<div class="top-header__social">
-<a href="#" class="top-header__link"><img src="@img/social/fb.png" alt="Facebook"></a>
-<a href="#" class="top-header__link"><img src="@img/social/inst.png" alt="Instagram"></a>
-<a href="#" class="top-header__link"><img src="@img/social/tg.png" alt="Telegram"></a>
-</div>
-<div class="top-header__phone">
-<a href="#" class="top-header__call"><img src="@img/header/call.png" alt="Call"></a>
-<a href="tel:+38 (099) 092 43 94" class="top-header__phone">+38 (099) 092 43 94</a>
-</div>
-</div>
-<div class="header__bottom header-bot">
-<div class="header-bot__nav">
-<div class="header__menu menu">
-<button type="button" data-fls-menu class="menu__icon icon-menu"><span></span></button>
-<nav class="menu__body">
-<ul class="menu__list">
-<li class="menu__item"><a href="" class="menu__link">Головна</a></li>
-<li class="menu__item"><a href="" class="menu__link">Каталог</a></li>
-<li class="menu__item"><a href="" class="menu__link">Акції</a></li>
-<li class="menu__item"><a href="" class="menu__link">Фотогалерея</a></li>
-<li class="menu__item"><a href="" class="menu__link">Оплата та доставка </a></li>
-<li class="menu__item"><a href="" class="menu__link">Документи</a></li>
-<li class="menu__item"><a href="" class="menu__link">Контакти</a></li>
-</ul>
-</nav>
-</div>
-</div>
-<div class="top-header__icons">
-<a href="#" class="top-header__icon top-header__search"><img src="@img/header/search.png" alt="Search"></a>
-<a href="#" class="top-header__icon top-header__search"><img src="@img/header/person.png" alt="Cabinet"></a>
-<a href="#" class="top-header__icon top-header__search"><img src="@img/header/cart.png" alt="Cart"></a>
-</div>
-</div>
-</div>
-</div>
--->
+				<div class="header__container">
+					<a href="index.html" class="header__logo">
+						<picture>
+							<source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp">
+							<img alt="#" src="./assets/img/logo.webp">
+						</picture>
+					</a>
+					<div class="header__nav">
+						<div class="header__top top-header">
+							<div data-fls-dynamic=".menu__body, 992" class="top-header__social">
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Facebook" src="./assets/img/social/fb.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Instagram" src="./assets/img/social/inst.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__link">
+									<picture>
+										<img alt="Telegram" src="./assets/img/social/tg.webp">
+									</picture>
+								</a>
+							</div>
+							<div data-fls-dynamic=".menu__body, 768" class="top-header__phone">
+								<a href="#" class="top-header__call">
+									<picture>
+										<img alt="Call" src="./assets/img/header/call.webp">
+									</picture>
+								</a>
+								<a href="tel:+380970457447" class="top-header__phone">+38 097 045 7447</a>
+							</div>
+						</div>
+						<div class="header__bottom header-bot">
+							<div class="header-bot__nav">
+								<div class="header__menu menu">
+									<nav class="menu__body">
+										<ul class="menu__list">
+											<li class="menu__item">
+												<a href="index.html" class="menu__link">Головна</a>
+											</li>
+											<li class="menu__item menu_parent">
+												<a href="catalog.html" class="menu__link">Каталог</a>
+												<div class="menu__sub sub-menu__body">
+													<ul class="sub-menu">
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Гірлянди</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Світлодіодні сітки</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Ялинки</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Освітлення фасадів</a>
+														</li>
+														<li class="sub-menu__item">
+															<a href="#" class="sub-menu__link">Акції</a>
+														</li>
+													</ul>
+												</div>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Блог</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Фотогалерея</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Оплата та доставка</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Документи</a>
+											</li>
+											<li class="menu__item">
+												<a href="" class="menu__link">Контакти</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<div class="top-header__icons">
+								<div data-fls-dynamic=".menu__body, 992" class="top-header__search-box">
+									<input type="text" class="top-header__input" placeholder="Пошук...">
+									<a href="#" class="top-header__icon top-header__search">
+										<img src="./assets/img/header/search.svg" alt="Search">
+									</a>
+								</div>
+								<div class="search-results" id="searchResults"></div>
+								<a href="#" class="top-header__icon top-header__person">
+									<picture>
+										<img alt="Cabinet" src="./assets/img/header/person.webp">
+									</picture>
+								</a>
+								<a href="#" class="top-header__icon top-header__cart cart-btn">
+									<picture>
+										<img alt="Cart" src="./assets/img/header/cart.webp">
+									</picture>
+									<span class="header__count">1</span>
+								</a>
+								<button type="button" data-fls-menu="" class="menu__icon icon-menu">
+									<span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</header>
+			<!-- Попап корзины -->
+			<div class="cart-popup">
+				<div class="cart-popup__content">
+					<button class="cart-popup__close">&times;</button>
+					<h2>Ваша корзина</h2>
+					<div class="cart-items">
+						<div class="cart-item">
+							<span>Гірлянда LED 10м</span>
+							<strong>350 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+						<div class="cart-item">
+							<span>Набір куль 20 шт.</span>
+							<strong>480 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+						<div class="cart-item">
+							<span>Свічки ароматичні</span>
+							<strong>120 ₴</strong>
+							<button class="remove-item">✖</button>
+						</div>
+					</div>
+					<div class="cart-footer">
+						<span class="cart-total">Всього: 950 ₴</span>
+						<button class="cart-checkout">Оформити замовлення</button>
+					</div>
+				</div>
+			</div>
+			<script>
+        const cartBtn = document.querySelector(".cart-btn");
+        const cartPopup = document.querySelector(".cart-popup");
+        const cartClose = document.querySelector(".cart-popup__close");
+        const removeButtons = document.querySelectorAll(".remove-item");
+        const cartCount = document.querySelector(".cart-count");
+        const cartTotal = document.querySelector(".cart-total");
+
+        cartBtn.addEventListener("click", () => {
+          cartPopup.classList.add("active");
+        });
+
+        cartClose.addEventListener("click", () => {
+          cartPopup.classList.remove("active");
+        });
+
+        window.addEventListener("click", (e) => {
+          if (e.target === cartPopup) {
+            cartPopup.classList.remove("active");
+          }
+        });
+
+        removeButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const item = this.closest(".cart-item");
+            item.remove();
+            updateCart();
+          });
+        });
+
+        function updateCart() {
+          const items = document.querySelectorAll(".cart-item");
+          let total = 0;
+          items.forEach((item) => {
+            total += parseInt(item.querySelector("strong").innerText);
+          });
+          cartCount.innerText = items.length;
+          cartTotal.innerText = `Всього: ${total} ₴`;
+          if (!items.length) {
+            document.querySelector(".cart-items").innerHTML = ' [object Object]
+            ';
+          }
+        }
+			</script>
+			<!-- Попап оформлення замовлення -->
+			<div class="order-popup">
+				<div class="order-popup__content">
+					<button class="order-popup__close">&times;</button>
+					<h2>Оформлення замовлення</h2>
+					<!-- Способи оплати -->
+					<div class="order-section">
+						<h3>Спосіб оплати:</h3>
+						<label>
+							<input type="radio" name="payment" value="cod" checked>
+							При отриманні
+						</label>
+						<label>
+							<input type="radio" name="payment" value="card">
+							На картку
+						</label>
+						<p class="payment-info">Без передоплати на картку замовлення не буде відправлено.</p>
+					</div>
+					<!-- Дані для відправки -->
+					<div class="order-section">
+						<h3>Дані для відправки:</h3>
+						<input type="text" name="name" placeholder="ПІБ" required>
+						<input type="tel" name="phone" placeholder="Телефон" required>
+						<input type="text" name="city" placeholder="Місто" required>
+						<input type="text" name="branch" placeholder="Відділення Нової Пошти" required>
+					</div>
+					<!-- Дані картки -->
+					<div class="order-section order-card" style="display: none">
+						<h3>Дані картки для оплати:</h3>
+						<h3>4444 4444 4444 4444</h3>
+					</div>
+					<button class="order-submit">Підтвердити замовлення</button>
+				</div>
+			</div>
+			<script>
+      const checkoutBtn = document.querySelector(".cart-checkout");
+      const orderPopup = document.querySelector(".order-popup");
+      const orderClose = document.querySelector(".order-popup__close");
+      const paymentRadios = document.querySelectorAll('input[name="payment"]');
+      const cardSection = document.querySelector(".order-card");
+
+      // Відкрити попап замовлення
+      checkoutBtn.addEventListener("click", () => {
+        cartPopup.classList.remove("active");
+        orderPopup.classList.add("active");
+      });
+
+      // Закрити попап замовлення
+      orderClose.addEventListener("click", () => {
+        orderPopup.classList.remove("active");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (e.target === orderPopup) {
+          orderPopup.classList.remove("active");
+        }
+      });
+
+      // Перемикач способів оплати
+      paymentRadios.forEach((radio) => {
+        radio.addEventListener("change", () => {
+          if (radio.value === "card") {
+            cardSection.style.display = "block";
+          } else {
+            cardSection.style.display = "none";
+          }
+        });
+      });
+
+      // Підтвердження замовлення
+      const orderSubmit = document.querySelector(".order-submit");
+      orderSubmit.addEventListener("click", () => {
+        alert("Ваше замовлення відправлене! Ми зв’яжемося з вами для підтвердження.");
+        orderPopup.classList.remove("active");
+      });
+		</script>
 			<main class="page">
 				<section class="page__hero hero">
 					<div class="hero__container">
 						<div class="hero__content">
-							<h1 class="hero__title">Ялинка України</h1>
+							<h1 class="hero__title">Світло Свята Друзів</h1>
 							<h2 class="hero__subtitle">
 								Виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та підвісних
                     світлодіодних сіток та стовбурових ялинок ексклюзивних розмірів
@@ -68,7 +287,7 @@
                     встановимо та освітимо найкращу ялинку. Індивідуальний підхід, робота під ключ за погодженим
                     проектом.
 							</div>
-							<a href="#" class="hero__button">
+							<a href="catalog.html" class="hero__button">
 								Переглянути каталог
 								<picture>
 									<img alt="Image" src="./assets/img/arr.webp">
@@ -174,99 +393,71 @@
 						</div>
 					</div>
 				</section>
-				<section class="page__catalog catalog">
-					<div class="catalog__container">
-						<h2 class="catalog__title">Каталог товарів</h2>
-						<div class="catalog__text">
-							Ми «Ялинка України- виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та
+				<section class="page__catalog-small catalog-small">
+					<div class="catalog-small__container">
+						<h2 class="catalog-small__title">Каталог товарів</h2>
+						<div class="catalog-small__text">
+							Ми «Світло Свято Друзів - виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та
                 підвісних світлодіодних сіток та стовбурових ялинок ексклюзивних розмірів.
 						</div>
-						<div data-fls-slider="" class="catalog__slider swiper">
-							<div class="catalog__wrapper swiper-wrapper">
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/01.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
+						<div data-fls-slider="" class="catalog-small__slider swiper">
+							<div class="catalog-small__wrapper swiper-wrapper">
+								<div class="catalog-small__slide swiper-slide">
+									<a href="#">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/catalog/01.webp">
+										</picture>
+										<div class="catalog-small__label">Text</div>
+									</a>
 								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/02-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/02-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/02.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
+								<div class="catalog-small__slide swiper-slide">
+									<a href="#">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/catalog/02-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/catalog/02-1200.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/catalog/02.webp">
+										</picture>
+										<div class="catalog-small__label">Text</div>
+									</a>
 								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/03-600.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/03.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
+								<div class="catalog-small__slide swiper-slide">
+									<a href="#">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/catalog/03-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/catalog/03.webp">
+										</picture>
+										<div class="catalog-small__label">Text</div>
+									</a>
 								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/04-600.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/04.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
+								<div class="catalog-small__slide swiper-slide">
+									<a href="#">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/catalog/04-600.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/catalog/04.webp">
+										</picture>
+										<div class="catalog-small__label">Text</div>
+									</a>
 								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/05-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/05-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/05.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
-								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/01.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
-								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/02-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/02-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/02.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
-								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/03-600.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/03.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
-								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/04-600.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/04.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
-								</div>
-								<div class="catalog__slide swiper-slide">
-									<picture>
-										<source media="(max-width: 600px)" srcset="./assets/img/catalog/05-600.webp" type="image/webp">
-										<source media="(max-width: 1200px)" srcset="./assets/img/catalog/05-1200.webp" type="image/webp">
-										<img alt="Image" src="./assets/img/catalog/05.webp">
-									</picture>
-									<div class="catalog__label">Text</div>
+								<div class="catalog-small__slide swiper-slide">
+									<a href="#">
+										<picture>
+											<source media="(max-width: 600px)" srcset="./assets/img/catalog/05-600.webp" type="image/webp">
+											<source media="(max-width: 1200px)" srcset="./assets/img/catalog/05-1200.webp" type="image/webp">
+											<img alt="Image" src="./assets/img/catalog/05.webp">
+										</picture>
+										<div class="catalog-small__label">Text</div>
+									</a>
 								</div>
 							</div>
-							<div class="catalog__nav">
-								<button type="button" class="catalog-swiper-button-prev">
+							<div class="catalog-small__nav">
+								<button type="button" class="catalog-small-swiper-button-prev">
 									<picture>
 										<img alt="Назад" src="./assets/img/arr_slider.webp">
 									</picture>
 								</button>
-								<button type="button" class="catalog-swiper-button-next">
+								<button type="button" class="catalog-small-swiper-button-next">
 									<picture>
 										<img alt="Вперед" src="./assets/img/arr_slider.webp">
 									</picture>
@@ -282,184 +473,102 @@
 						<div data-fls-slider="" class="discount__slider swiper">
 							<div class="discount__wrapper swiper-wrapper">
 								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/discount/01-600.webp" type="image/webp">
-											<img alt="Image" src="./assets/img/discount/01.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда статична жовта 2м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
+									<a href="#" class="discount__item">
+										<div class="discount__action">Акція</div>
+										<div class="discount__img">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/discount/01-600.webp" type="image/webp">
+												<img alt="Image" src="./assets/img/discount/01.webp">
+											</picture>
 										</div>
-									</div>
+										<div class="discount__info">
+											Гірлянда статична жовта 2м
+											<div class="discount__nav">
+												<div class="discount__cost">
+													<span>235,00</span>
+													грн
+												</div>
+												<a href="#" class="discount__go">
+													<picture>
+														<img alt="До товару" src="./assets/img/arr_slider.webp">
+													</picture>
+												</a>
+											</div>
+										</div>
+									</a>
 								</div>
 								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<img alt="Image" src="./assets/img/discount/02.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда куля
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
+									<a href="#" class="discount__item">
+										<div class="discount__action">Акція</div>
+										<div class="discount__img">
+											<picture>
+												<img alt="Image" src="./assets/img/discount/02.webp">
+											</picture>
 										</div>
-									</div>
+										<div class="discount__info">
+											Гірлянда куля
+											<div class="discount__nav">
+												<div class="discount__cost">
+													<span>235,00</span>
+													грн
+												</div>
+												<a href="#" class="discount__go">
+													<picture>
+														<img alt="До товару" src="./assets/img/arr_slider.webp">
+													</picture>
+												</a>
+											</div>
+										</div>
+									</a>
 								</div>
 								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/discount/03-600.webp" type="image/webp">
-											<img alt="Image" src="./assets/img/discount/03.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Глобино, стовбурова сосна, 9 м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
+									<a href="#" class="discount__item">
+										<div class="discount__action">Акція</div>
+										<div class="discount__img">
+											<picture>
+												<source media="(max-width: 600px)" srcset="./assets/img/discount/03-600.webp" type="image/webp">
+												<img alt="Image" src="./assets/img/discount/03.webp">
+											</picture>
 										</div>
-									</div>
+										<div class="discount__info">
+											Глобино, стовбурова сосна, 9 м
+											<div class="discount__nav">
+												<div class="discount__cost">
+													<span>235,00</span>
+													грн
+												</div>
+												<a href="#" class="discount__go">
+													<picture>
+														<img alt="До товару" src="./assets/img/arr_slider.webp">
+													</picture>
+												</a>
+											</div>
+										</div>
+									</a>
 								</div>
 								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<img alt="Image" src="./assets/img/discount/04.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда статична жовта 2м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
+									<a href="#" class="discount__item">
+										<div class="discount__action">Акція</div>
+										<div class="discount__img">
+											<picture>
+												<img alt="Image" src="./assets/img/discount/04.webp">
+											</picture>
 										</div>
-									</div>
-								</div>
-								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/discount/01-600.webp" type="image/webp">
-											<img alt="Image" src="./assets/img/discount/01.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда статична жовта 2м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
+										<div class="discount__info">
+											Гірлянда статична жовта 2м
+											<div class="discount__nav">
+												<div class="discount__cost">
+													<span>235,00</span>
+													грн
+												</div>
+												<a href="#" class="discount__go">
+													<picture>
+														<img alt="До товару" src="./assets/img/arr_slider.webp">
+													</picture>
+												</a>
 											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
 										</div>
-									</div>
-								</div>
-								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<img alt="Image" src="./assets/img/discount/02.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда куля
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<source media="(max-width: 600px)" srcset="./assets/img/discount/03-600.webp" type="image/webp">
-											<img alt="Image" src="./assets/img/discount/03.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Глобино, стовбурова сосна, 9 м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
-										</div>
-									</div>
-								</div>
-								<div class="discount__slide swiper-slide">
-									<div class="discount__action">Акція</div>
-									<div class="discount__img">
-										<picture>
-											<img alt="Image" src="./assets/img/discount/04.webp">
-										</picture>
-									</div>
-									<div class="discount__info">
-										Гірлянда статична жовта 2м
-										<div class="discount__nav">
-											<div class="discount__cost">
-												<span>235,00</span>
-												грн
-											</div>
-											<a href="#" class="discount__go">
-												<picture>
-													<img alt="До товару" src="./assets/img/arr_slider.webp">
-												</picture>
-											</a>
-										</div>
-									</div>
+									</a>
 								</div>
 							</div>
 							<div class="discount__btns">
@@ -489,10 +598,11 @@
 							</div>
 							<div class="about__content">
 								<div class="about__text">
-									Ми «Ялинка України виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних
-                        та підвісних світлодіодних сіток та стовбурових ялинок ексклюзивних розмірів. З радістю зробимо
-                        помітним Ваш бізнес (готель, ресторан, торговий павільйон) облаштуємо ковзанку чи встановимо та
-                        освітимо найкращу ялинку. Індивідуальний підхід, робота під ключ за погодженим проектом.
+									Ми «Світло свята друзів- виробники якісних та довговічних вуличних гірлянд, 3D освітлення,
+                        віражних та підвісних світлодіодних сіток та стовбурових ялинок ексклюзивних розмірів. З радістю
+                        зробимо помітним Ваш бізнес (готель, ресторан, торговий павільйон) облаштуємо ковзанку чи
+                        встановимо та освітимо найкращу ялинку. Індивідуальний підхід, робота під ключ за погодженим
+                        проектом.
 								</div>
 								<div class="about__row">
 									<div class="about__item item-about">
