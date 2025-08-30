@@ -1,506 +1,667 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-		<link rel="shortcut icon" href="assets/img/favicon.ico">
-		<title>Каталог</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1756540713818"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756540713818">
-		<link rel="stylesheet" crossorigin="" href="./css/catalog.min.css?v=1756540713818">
-	</head>
-	<body>
-		<div class="wrapper">
-			<header data-fls-header="" class="header">
-				<div class="header__container">
-					<a href="index.html" class="header__logo">
-						<picture>
-							<source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp">
-							<img alt="#" src="./assets/img/logo.webp">
-						</picture>
-					</a>
-					<div class="header__nav">
-						<div class="header__top top-header">
-							<div data-fls-dynamic=".menu__body, 992" class="top-header__social">
-								<a href="#" class="top-header__link">
-									<picture>
-										<img alt="Facebook" src="./assets/img/social/fb.webp">
-									</picture>
-								</a>
-								<a href="#" class="top-header__link">
-									<picture>
-										<img alt="Instagram" src="./assets/img/social/inst.webp">
-									</picture>
-								</a>
-								<a href="#" class="top-header__link">
-									<picture>
-										<img alt="Telegram" src="./assets/img/social/tg.webp">
-									</picture>
-								</a>
-							</div>
-							<div data-fls-dynamic=".menu__body, 768" class="top-header__phone">
-								<a href="#" class="top-header__call">
-									<picture>
-										<img alt="Call" src="./assets/img/header/call.webp">
-									</picture>
-								</a>
-								<a href="tel:+380970457447" class="top-header__phone">+38 097 045 7447</a>
-							</div>
-						</div>
-						<div class="header__bottom header-bot">
-							<div class="header-bot__nav">
-								<div class="header__menu menu">
-									<nav class="menu__body">
-										<ul class="menu__list">
-											<li class="menu__item">
-												<a href="index.html" class="menu__link">Головна</a>
-											</li>
-											<li class="menu__item menu_parent">
-												<a href="catalog.html" class="menu__link">Каталог</a>
-												<div class="menu__sub sub-menu__body">
-													<ul class="sub-menu">
-														<li class="sub-menu__item">
-															<a href="#" class="sub-menu__link">Гірлянди</a>
-														</li>
-														<li class="sub-menu__item">
-															<a href="#" class="sub-menu__link">Світлодіодні сітки</a>
-														</li>
-														<li class="sub-menu__item">
-															<a href="#" class="sub-menu__link">Ялинки</a>
-														</li>
-														<li class="sub-menu__item">
-															<a href="#" class="sub-menu__link">Освітлення фасадів</a>
-														</li>
-														<li class="sub-menu__item">
-															<a href="#" class="sub-menu__link">Акції</a>
-														</li>
-													</ul>
-												</div>
-											</li>
-											<li class="menu__item">
-												<a href="" class="menu__link">Блог</a>
-											</li>
-											<li class="menu__item">
-												<a href="index.html#gallery" class="menu__link">Фотогалерея</a>
-											</li>
-											<li class="menu__item">
-												<a href="" class="menu__link">Оплата та доставка</a>
-											</li>
-											<li class="menu__item">
-												<a href="" class="menu__link">Документи</a>
-											</li>
-											<li class="menu__item">
-												<a href="" class="menu__link">Контакти</a>
-											</li>
-										</ul>
-									</nav>
-								</div>
-							</div>
-							<div class="top-header__icons">
-								<div data-fls-dynamic=".menu__body, 992" class="top-header__search-box">
-									<input type="text" class="top-header__input" placeholder="Пошук...">
-									<a href="#" class="top-header__icon top-header__search">
-										<img src="./assets/img/header/search.svg" alt="Search">
-									</a>
-								</div>
-								<div class="search-results" id="searchResults"></div>
-								<a href="#" class="top-header__icon top-header__cart cart-btn">
-									<picture>
-										<img alt="Cart" src="./assets/img/header/cart.webp">
-									</picture>
-									<span class="header__count">1</span>
-								</a>
-								<button type="button" data-fls-menu="" class="menu__icon icon-menu">
-									<span></span>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-			<!-- Попап корзины -->
-			<div class="cart-popup">
-				<div class="cart-popup__content">
-					<button class="cart-popup__close">&times;</button>
-					<h2>Ваша корзина</h2>
-					<div class="cart-items"><!-- Тут будуть товари з JS --></div>
-					<div class="cart-footer">
-						<span class="cart-total">Всього: 0 ₴</span>
-						<button class="cart-checkout">Оформити замовлення</button>
-					</div>
-				</div>
-			</div>
-			<!-- Попап оформлення замовлення -->
-			<div class="order-popup">
-				<div class="order-popup__content">
-					<button class="order-popup__close">&times;</button>
-					<h2>Оформлення замовлення</h2>
-					<!-- Список товарів -->
-					<div class="order-items"><!-- Тут JS динамічно вставить товари з кошика --></div>
-					<!-- Підсумок -->
-					<div class="order-total">
-						Всього до сплати:
-						<span class="order-total__sum">0 ₴</span>
-					</div>
-					<!-- Форма для відправки -->
-					<form class="order-form">
-						<label>
-							ПІБ:
-							<input type="text" name="name" required placeholder="Ім'я Прізвище">
-						</label>
-						<label>
-							Телефон:
-							<input type="tel" name="phone" required placeholder="+380">
-						</label>
-						<label>
-							Місто:
-							<input type="text" name="city" required placeholder="Місто">
-						</label>
-						<label>
-							Відділення НП:
-							<input type="text" name="branch" required placeholder="№ відділення">
-						</label>
-					</form>
-					<!-- Інформація про оплату -->
-					<div class="order-payment">
-						Оплата на картку:
-						<br>
-						<strong>4444 4444 4444 4444</strong>
-						<br>
-						Після оплати замовлення буде оброблено.
-					</div>
-					<button class="order-confirm">Підтвердити замовлення</button>
-				</div>
-			</div>
-			<main class="page">
-				<div class="page__nav">
-					<div class="page__container">
-						<a href="index.html" class="page__prev">Головна /</a>
-						<span class="page__current">Каталог</span>
-					</div>
-				</div>
-				<section class="page__catalog catalog">
-					<div class="catalog__container">
-						<aside class="catalog__sidebar">
-							<div class="catalog__label">Категорії:</div>
-							<ul class="catalog__list">
-								<li class="catalog__item-list">
-									<a href="#" class="catalog__link">Гірлянди</a>
-								</li>
-								<li class="catalog__item-list">
-									<a href="#" class="catalog__link">Світлодіодні сітки</a>
-								</li>
-								<li class="catalog__item-list">
-									<a href="#" class="catalog__link">Ялинки</a>
-								</li>
-								<li class="catalog__item-list">
-									<a href="#" class="catalog__link">Освітлення фасадів</a>
-								</li>
-								<li class="catalog__item-list">
-									<a href="#" class="catalog__link">Акції</a>
-								</li>
-							</ul>
-							<form action="#" class="catalog__price">
-								<div class="catalog__label">Ціна:</div>
-								<div class="catalog__prices">
-									<input type="text" required placeholder="Від" class="catalog__input">
-									<input type="text" required placeholder="До" class="catalog__input">
-									<button data-fls-button="" type="submit" class="catalog__btn">Підвтердити</button>
-								</div>
-							</form>
-						</aside>
-						<div class="catalog__content">
-							<div class="catalog__catalog">
-								<div class="catalog__info">
-									<h2 class="catalog__title">Каталог</h2>
-									<div class="catalog__menu">
-										<div class="catalog__sort">
-											Сортувати за: популярні
-											<div class="catalog__subsort">
-												<button type="button" class="catalog__substor-item">дешевше</button>
-												<button type="button" class="catalog__substor-item">дорожче</button>
-											</div>
-										</div>
-										<!-- Кнопка уже есть -->
-										<div class="catalog__filter">Фільтри</div>
-										<!-- Модальное окно фильтра -->
-										<div class="catalog__filter-modal">
-											<div class="catalog__filter-content">
-												<button class="catalog__filter-close">✖</button>
-												<div class="catalog__label">Категорії:</div>
-												<ul class="catalog__list">
-													<li class="catalog__item-list">
-														<a href="#" class="catalog__link">Гірлянди</a>
-													</li>
-													<li class="catalog__item-list">
-														<a href="#" class="catalog__link">Світлодіодні сітки</a>
-													</li>
-													<li class="catalog__item-list">
-														<a href="#" class="catalog__link">Ялинки</a>
-													</li>
-													<li class="catalog__item-list">
-														<a href="#" class="catalog__link">Освітлення фасадів</a>
-													</li>
-													<li class="catalog__item-list">
-														<a href="#" class="catalog__link">Акції</a>
-													</li>
-												</ul>
-												<form action="#" class="catalog__price">
-													<div class="catalog__label">Ціна:</div>
-													<div class="catalog__prices">
-														<input type="text" required placeholder="Від" class="catalog__input">
-														<input type="text" required placeholder="До" class="catalog__input">
-														<button data-fls-button="" type="submit" class="catalog__btn">Підвтердити</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="catalog__row">
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 1</h3>
-												<div class="item-catalog__price">
-													<span>1 000</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="1" data-title="Товар 1" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 2</h3>
-												<div class="item-catalog__price">
-													<span>1 200</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="2" data-title="Товар 2" data-price="1200" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 3</h3>
-												<div class="item-catalog__price">
-													<span>1 000</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="3" data-title="Товар 3" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 4</h3>
-												<div class="item-catalog__price">
-													<span>1 000</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="4" data-title="Товар 4" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 5</h3>
-												<div class="item-catalog__price">
-													<span>1 000</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="5" data-title="Товар 5" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-									<a href="#" class="catalog__item item-catalog">
-										<div class="item-catalog__img">
-											<picture>
-												<source media="(max-width: 600px)" srcset="./assets/img/catalog/01-600.webp" type="image/webp">
-												<source media="(max-width: 1200px)" srcset="./assets/img/catalog/01-1200.webp" type="image/webp">
-												<img alt="Товар" src="./assets/img/catalog/01.webp">
-											</picture>
-										</div>
-										<div class="item-catalog__nav">
-											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Товар 6</h3>
-												<div class="item-catalog__price">
-													<span>1 000</span>
-													грн
-												</div>
-											</div>
-											<div class="item-catalog__buttons">
-												<button class="item-catalog__btn">Замовити в один клік</button>
-												<button data-id="6" data-title="Товар 6" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
-											</div>
-										</div>
-									</a>
-								</div>
-								<div class="catalog__pagination"></div>
-							</div>
-						</div>
-					</div>
-				</section>
-			</main>
-			<footer data-fls-footer="" class="footer">
-				<div class="footer__container">
-					<div class="footer__info info-footer">
-						<a href="#" class="footer__logo">
-							<picture>
-								<source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp">
-								<img alt="Logo" src="./assets/img/logo.webp">
-							</picture>
-						</a>
-						<div class="info-footer__text">
-							Виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та підвісних світлодіодних
-                сіток та стовбурових ялинок ексклюзивних розмірів
-						</div>
-						<div class="info-footer__social">
-							<a href="#" class="footer__link">
-								<picture>
-									<img alt="Facebook" src="./assets/img/social/fb.webp">
-								</picture>
-							</a>
-							<a href="#" class="footer__link">
-								<picture>
-									<img alt="Instagram" src="./assets/img/social/inst.webp">
-								</picture>
-							</a>
-							<a href="#" class="footer__link">
-								<picture>
-									<img alt="Telegram" src="./assets/img/social/tg.webp">
-								</picture>
-							</a>
-						</div>
-					</div>
-					<div class="footer__nav nav-footer">
-						<h2 class="footer__title">Інформація</h2>
-						<nav class="nav-footer__menu menu-footer">
-							<ul class="menu-footer__list">
-								<li class="menu-footer__item">
-									<a href="index.php" class="menu-footer__link">Головна</a>
-								</li>
-								<li class="menu-footer__item menu_parent">
-									<a href="https://yalunka.market/catalog/" class="menu-footer__link">Каталог</a>
-									<ul class="menu-footer__sub sub-menu">
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/girlyandy/" class="sub-menu__link">Гірлянди</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/3d-fontany/" class="sub-menu__link">3D Фонтани</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/figury-arky-ta-instalyacziyi/" class="sub-menu__link">Фігури, арки та інсталяції</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/igrashky/" class="sub-menu__link">Іграшки</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/makivka/" class="sub-menu__link">Маківка</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/ogorozha/" class="sub-menu__link">Огорожа</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/promyslove-zabezpechennya/" class="sub-menu__link">Промисловe забезпечення</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/rgb-kuli/" class="sub-menu__link">RGB Кулі</a>
-										</li>
-										<li class="sub-menu__item">
-											<a href="https://yalunka.market/product-category/gabiony/" class="sub-menu__link">Габіони</a>
-										</li>
-									</ul>
-								</li>
-								<li class="menu-footer__item">
-									<a href="https://yalunka.market/product-category/akcziyi/" class="menu-footer__link">Акції</a>
-								</li>
-								<li class="menu-footer__item">
-									<a href="index.php" class="menu-footer__link">Фотогалерея</a>
-								</li>
-								<li class="menu-footer__item">
-									<a href="https://yalunka.market/oplata-ta-dostavka/" class="menu-footer__link">Оплата та доставка</a>
-								</li>
-								<li class="menu-footer__item">
-									<a href="https://yalunka.market/dokumenty/" class="menu-footer__link">Документи</a>
-								</li>
-								<li class="menu-footer__item">
-									<a href="https://yalunka.market/kontakty/" class="menu-footer__link">Контакти</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
-					<div class="footer__contact contact-footer">
-						<h2 class="footer__title">Контакти</h2>
-						<div class="contact-footer__mob">
-							<a href="tel:+380970457447" class="contact-footer__tel">0970457447</a>
-						</div>
-						<div class="contact-footer__email">
-							<a href="mailto:svstlosvyata@gmail.com" class="contact-footer__mail">svstlosvyata@gmail.com</a>
-						</div>
-					</div>
-					<div class="footer__adress adress-footer">
-						<h2 class="footer__title">Адреса</h2>
-						<div class="adress-footer__adress">46001 Тернопіль вул. Грушевського 23</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="preload"
+            href="./assets/fonts/helvetica_regular.woff2"
+            as="font"
+            type="font/woff2"
+            crossorigin="anonymous"
+        />
+        <link rel="shortcut icon" href="assets/img/favicon.ico" />
+        <title>Каталог</title>
+        <script type="module" crossorigin="" src="./js/app.min.js?v=1756540713818"></script>
+        <script type="module" crossorigin="" src="./js/index.min.js"></script>
+        <link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756540713818" />
+        <link rel="stylesheet" crossorigin="" href="./css/catalog.min.css?v=1756540713818" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header data-fls-header="" class="header">
+                <div class="header__container">
+                    <a href="index.html" class="header__logo">
+                        <picture>
+                            <source media="(max-width: 600px)" srcset="./assets/img/logo-600.webp" type="image/webp" />
+                            <img alt="#" src="./assets/img/logo.webp" />
+                        </picture>
+                    </a>
+                    <div class="header__nav">
+                        <div class="header__top top-header">
+                            <div data-fls-dynamic=".menu__body, 992" class="top-header__social">
+                                <a href="#" class="top-header__link">
+                                    <picture>
+                                        <img alt="Facebook" src="./assets/img/social/fb.webp" />
+                                    </picture>
+                                </a>
+                                <a href="#" class="top-header__link">
+                                    <picture>
+                                        <img alt="Instagram" src="./assets/img/social/inst.webp" />
+                                    </picture>
+                                </a>
+                                <a href="#" class="top-header__link">
+                                    <picture>
+                                        <img alt="Telegram" src="./assets/img/social/tg.webp" />
+                                    </picture>
+                                </a>
+                            </div>
+                            <div data-fls-dynamic=".menu__body, 768" class="top-header__phone">
+                                <a href="#" class="top-header__call">
+                                    <picture>
+                                        <img alt="Call" src="./assets/img/header/call.webp" />
+                                    </picture>
+                                </a>
+                                <a href="tel:+380970457447" class="top-header__phone">+38 097 045 7447</a>
+                            </div>
+                        </div>
+                        <div class="header__bottom header-bot">
+                            <div class="header-bot__nav">
+                                <div class="header__menu menu">
+                                    <nav class="menu__body">
+                                        <ul class="menu__list">
+                                            <li class="menu__item">
+                                                <a href="index.html" class="menu__link">Головна</a>
+                                            </li>
+                                            <li class="menu__item menu_parent">
+                                                <a href="catalog.html" class="menu__link">Каталог</a>
+                                                <div class="menu__sub sub-menu__body">
+                                                    <ul class="sub-menu">
+                                                        <li class="sub-menu__item">
+                                                            <a href="#" class="sub-menu__link">Гірлянди</a>
+                                                        </li>
+                                                        <li class="sub-menu__item">
+                                                            <a href="#" class="sub-menu__link">Світлодіодні сітки</a>
+                                                        </li>
+                                                        <li class="sub-menu__item">
+                                                            <a href="#" class="sub-menu__link">Ялинки</a>
+                                                        </li>
+                                                        <li class="sub-menu__item">
+                                                            <a href="#" class="sub-menu__link">Освітлення фасадів</a>
+                                                        </li>
+                                                        <li class="sub-menu__item">
+                                                            <a href="#" class="sub-menu__link">Акції</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="menu__item">
+                                                <a href="" class="menu__link">Блог</a>
+                                            </li>
+                                            <li class="menu__item">
+                                                <a href="index.html#gallery" class="menu__link">Фотогалерея</a>
+                                            </li>
+                                            <li class="menu__item">
+                                                <a href="" class="menu__link">Оплата та доставка</a>
+                                            </li>
+                                            <li class="menu__item">
+                                                <a href="" class="menu__link">Документи</a>
+                                            </li>
+                                            <li class="menu__item">
+                                                <a href="" class="menu__link">Контакти</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="top-header__icons">
+                                <div data-fls-dynamic=".menu__body, 992" class="top-header__search-box">
+                                    <input type="text" class="top-header__input" placeholder="Пошук..." />
+                                    <a href="#" class="top-header__icon top-header__search">
+                                        <img src="./assets/img/header/search.svg" alt="Search" />
+                                    </a>
+                                </div>
+                                <div class="search-results" id="searchResults"></div>
+                                <a href="#" class="top-header__icon top-header__cart cart-btn">
+                                    <picture>
+                                        <img alt="Cart" src="./assets/img/header/cart.webp" />
+                                    </picture>
+                                    <span class="header__count">1</span>
+                                </a>
+                                <button type="button" data-fls-menu="" class="menu__icon icon-menu">
+                                    <span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- Попап корзины -->
+            <div class="cart-popup">
+                <div class="cart-popup__content">
+                    <button class="cart-popup__close">&times;</button>
+                    <h2>Ваша корзина</h2>
+                    <div class="cart-items"><!-- Тут будуть товари з JS --></div>
+                    <div class="cart-footer">
+                        <span class="cart-total">Всього: 0 ₴</span>
+                        <button class="cart-checkout">Оформити замовлення</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Попап оформлення замовлення -->
+            <div class="order-popup">
+                <div class="order-popup__content">
+                    <button class="order-popup__close">&times;</button>
+                    <h2>Оформлення замовлення</h2>
+                    <!-- Список товарів -->
+                    <div class="order-items"><!-- Тут JS динамічно вставить товари з кошика --></div>
+                    <!-- Підсумок -->
+                    <div class="order-total">
+                        Всього до сплати:
+                        <span class="order-total__sum">0 ₴</span>
+                    </div>
+                    <!-- Форма для відправки -->
+                    <form class="order-form">
+                        <label>
+                            ПІБ:
+                            <input type="text" name="name" required placeholder="Ім'я Прізвище" />
+                        </label>
+                        <label>
+                            Телефон:
+                            <input type="tel" name="phone" required placeholder="+380" />
+                        </label>
+                        <label>
+                            Місто:
+                            <input type="text" name="city" required placeholder="Місто" />
+                        </label>
+                        <label>
+                            Відділення НП:
+                            <input type="text" name="branch" required placeholder="№ відділення" />
+                        </label>
+                    </form>
+                    <!-- Інформація про оплату -->
+                    <div class="order-payment">
+                        Оплата на картку:
+                        <br />
+                        <strong>4444 4444 4444 4444</strong>
+                        <br />
+                        Після оплати замовлення буде оброблено.
+                    </div>
+                    <button class="order-confirm">Підтвердити замовлення</button>
+                </div>
+            </div>
+            <main class="page">
+                <div class="page__nav">
+                    <div class="page__container">
+                        <a href="index.html" class="page__prev">Головна /</a>
+                        <span class="page__current">Каталог</span>
+                    </div>
+                </div>
+                <section class="page__catalog catalog">
+                    <div class="catalog__container">
+                        <aside class="catalog__sidebar">
+                            <div class="catalog__label">Категорії:</div>
+                            <ul class="catalog__list">
+                                <li class="catalog__item-list">
+                                    <a href="#" class="catalog__link">Гірлянди</a>
+                                </li>
+                                <li class="catalog__item-list">
+                                    <a href="#" class="catalog__link">Світлодіодні сітки</a>
+                                </li>
+                                <li class="catalog__item-list">
+                                    <a href="#" class="catalog__link">Ялинки</a>
+                                </li>
+                                <li class="catalog__item-list">
+                                    <a href="#" class="catalog__link">Освітлення фасадів</a>
+                                </li>
+                                <li class="catalog__item-list">
+                                    <a href="#" class="catalog__link">Акції</a>
+                                </li>
+                            </ul>
+                            <form action="#" class="catalog__price">
+                                <div class="catalog__label">Ціна:</div>
+                                <div class="catalog__prices">
+                                    <input type="text" required placeholder="Від" class="catalog__input" />
+                                    <input type="text" required placeholder="До" class="catalog__input" />
+                                    <button data-fls-button="" type="submit" class="catalog__btn">Підвтердити</button>
+                                </div>
+                            </form>
+                        </aside>
+                        <div class="catalog__content">
+                            <div class="catalog__catalog">
+                                <div class="catalog__info">
+                                    <h2 class="catalog__title">Каталог</h2>
+                                    <div class="catalog__menu">
+                                        <div class="catalog__sort">
+                                            Сортувати за: популярні
+                                            <div class="catalog__subsort">
+                                                <button type="button" class="catalog__substor-item">дешевше</button>
+                                                <button type="button" class="catalog__substor-item">дорожче</button>
+                                            </div>
+                                        </div>
+                                        <!-- Кнопка уже есть -->
+                                        <div class="catalog__filter">Фільтри</div>
+                                        <!-- Модальное окно фильтра -->
+                                        <div class="catalog__filter-modal">
+                                            <div class="catalog__filter-content">
+                                                <button class="catalog__filter-close">✖</button>
+                                                <div class="catalog__label">Категорії:</div>
+                                                <ul class="catalog__list">
+                                                    <li class="catalog__item-list">
+                                                        <a href="#" class="catalog__link">Гірлянди</a>
+                                                    </li>
+                                                    <li class="catalog__item-list">
+                                                        <a href="#" class="catalog__link">Світлодіодні сітки</a>
+                                                    </li>
+                                                    <li class="catalog__item-list">
+                                                        <a href="#" class="catalog__link">Ялинки</a>
+                                                    </li>
+                                                    <li class="catalog__item-list">
+                                                        <a href="#" class="catalog__link">Освітлення фасадів</a>
+                                                    </li>
+                                                    <li class="catalog__item-list">
+                                                        <a href="#" class="catalog__link">Акції</a>
+                                                    </li>
+                                                </ul>
+                                                <form action="#" class="catalog__price">
+                                                    <div class="catalog__label">Ціна:</div>
+                                                    <div class="catalog__prices">
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            placeholder="Від"
+                                                            class="catalog__input"
+                                                        />
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            placeholder="До"
+                                                            class="catalog__input"
+                                                        />
+                                                        <button data-fls-button="" type="submit" class="catalog__btn">
+                                                            Підвтердити
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="catalog__row">
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 1</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 000</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="1"
+                                                    data-title="Товар 1"
+                                                    data-price="1000"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 2</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 200</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="2"
+                                                    data-title="Товар 2"
+                                                    data-price="1200"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 3</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 000</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="3"
+                                                    data-title="Товар 3"
+                                                    data-price="1000"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 4</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 000</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="4"
+                                                    data-title="Товар 4"
+                                                    data-price="1000"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 5</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 000</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="5"
+                                                    data-title="Товар 5"
+                                                    data-price="1000"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="catalog__item item-catalog">
+                                        <div class="item-catalog__img">
+                                            <picture>
+                                                <source
+                                                    media="(max-width: 600px)"
+                                                    srcset="./assets/img/catalog/01-600.webp"
+                                                    type="image/webp"
+                                                />
+                                                <source
+                                                    media="(max-width: 1200px)"
+                                                    srcset="./assets/img/catalog/01-1200.webp"
+                                                    type="image/webp"
+                                                />
+                                                <img alt="Товар" src="./assets/img/catalog/01.webp" />
+                                            </picture>
+                                        </div>
+                                        <div class="item-catalog__nav">
+                                            <div class="item-catalog__info">
+                                                <h3 class="item-catalog__title">Товар 6</h3>
+                                                <div class="item-catalog__price">
+                                                    <span>1 000</span>
+                                                    грн
+                                                </div>
+                                            </div>
+                                            <div class="item-catalog__buttons">
+                                                <button class="item-catalog__btn">Замовити в один клік</button>
+                                                <button
+                                                    data-id="6"
+                                                    data-title="Товар 6"
+                                                    data-price="1000"
+                                                    data-image="assets/img/catalog/01.png"
+                                                    class="item-catalog__btn btn-buy"
+                                                >
+                                                    Купити
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="catalog__pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <footer data-fls-footer="" class="footer">
+                <div class="footer__container">
+                    <div class="footer__info info-footer">
+                        <a href="#" class="footer__logo">
+                            <picture>
+                                <source
+                                    media="(max-width: 600px)"
+                                    srcset="./assets/img/logo-600.webp"
+                                    type="image/webp"
+                                />
+                                <img alt="Logo" src="./assets/img/logo.webp" />
+                            </picture>
+                        </a>
+                        <div class="info-footer__text">
+                            Виробники якісних та довговічних вуличних гірлянд, 3D освітлення, вітражних та підвісних
+                            світлодіодних сіток та стовбурових ялинок ексклюзивних розмірів
+                        </div>
+                        <div class="info-footer__social">
+                            <a href="#" class="footer__link">
+                                <picture>
+                                    <img alt="Facebook" src="./assets/img/social/fb.webp" />
+                                </picture>
+                            </a>
+                            <a href="#" class="footer__link">
+                                <picture>
+                                    <img alt="Instagram" src="./assets/img/social/inst.webp" />
+                                </picture>
+                            </a>
+                            <a href="#" class="footer__link">
+                                <picture>
+                                    <img alt="Telegram" src="./assets/img/social/tg.webp" />
+                                </picture>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__nav nav-footer">
+                        <h2 class="footer__title">Інформація</h2>
+                        <nav class="nav-footer__menu menu-footer">
+                            <ul class="menu-footer__list">
+                                <li class="menu-footer__item">
+                                    <a href="index.php" class="menu-footer__link">Головна</a>
+                                </li>
+                                <li class="menu-footer__item menu_parent">
+                                    <a href="https://yalunka.market/catalog/" class="menu-footer__link">Каталог</a>
+                                    <ul class="menu-footer__sub sub-menu">
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/girlyandy/"
+                                                class="sub-menu__link"
+                                                >Гірлянди</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/3d-fontany/"
+                                                class="sub-menu__link"
+                                                >3D Фонтани</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/figury-arky-ta-instalyacziyi/"
+                                                class="sub-menu__link"
+                                                >Фігури, арки та інсталяції</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/igrashky/"
+                                                class="sub-menu__link"
+                                                >Іграшки</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/makivka/"
+                                                class="sub-menu__link"
+                                                >Маківка</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/ogorozha/"
+                                                class="sub-menu__link"
+                                                >Огорожа</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/promyslove-zabezpechennya/"
+                                                class="sub-menu__link"
+                                                >Промисловe забезпечення</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/rgb-kuli/"
+                                                class="sub-menu__link"
+                                                >RGB Кулі</a
+                                            >
+                                        </li>
+                                        <li class="sub-menu__item">
+                                            <a
+                                                href="https://yalunka.market/product-category/gabiony/"
+                                                class="sub-menu__link"
+                                                >Габіони</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-footer__item">
+                                    <a href="https://yalunka.market/product-category/akcziyi/" class="menu-footer__link"
+                                        >Акції</a
+                                    >
+                                </li>
+                                <li class="menu-footer__item">
+                                    <a href="index.php" class="menu-footer__link">Фотогалерея</a>
+                                </li>
+                                <li class="menu-footer__item">
+                                    <a href="https://yalunka.market/oplata-ta-dostavka/" class="menu-footer__link"
+                                        >Оплата та доставка</a
+                                    >
+                                </li>
+                                <li class="menu-footer__item">
+                                    <a href="https://yalunka.market/dokumenty/" class="menu-footer__link">Документи</a>
+                                </li>
+                                <li class="menu-footer__item">
+                                    <a href="https://yalunka.market/kontakty/" class="menu-footer__link">Контакти</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="footer__contact contact-footer">
+                        <h2 class="footer__title">Контакти</h2>
+                        <div class="contact-footer__mob">
+                            <a href="tel:+380970457447" class="contact-footer__tel">0970457447</a>
+                        </div>
+                        <div class="contact-footer__email">
+                            <a href="mailto:svstlosvyata@gmail.com" class="contact-footer__mail"
+                                >svstlosvyata@gmail.com</a
+                            >
+                        </div>
+                    </div>
+                    <div class="footer__adress adress-footer">
+                        <h2 class="footer__title">Адреса</h2>
+                        <div class="adress-footer__adress">46001 Тернопіль вул. Грушевського 23</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </body>
 </html>
