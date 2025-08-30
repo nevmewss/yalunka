@@ -175,20 +175,20 @@ function updateCart() {
   }
 }
 const checkoutBtn = document.querySelector(".cart-checkout");
-const orderPopup = document.querySelector(".order-popup");
+const orderPopup$1 = document.querySelector(".order-popup");
 const orderClose = document.querySelector(".order-popup__close");
 const paymentRadios = document.querySelectorAll('input[name="payment"]');
 const cardSection = document.querySelector(".order-card");
 checkoutBtn.addEventListener("click", () => {
   cartPopup.classList.remove("active");
-  orderPopup.classList.add("active");
+  orderPopup$1.classList.add("active");
 });
 orderClose.addEventListener("click", () => {
-  orderPopup.classList.remove("active");
+  orderPopup$1.classList.remove("active");
 });
 window.addEventListener("click", (e) => {
-  if (e.target === orderPopup) {
-    orderPopup.classList.remove("active");
+  if (e.target === orderPopup$1) {
+    orderPopup$1.classList.remove("active");
   }
 });
 paymentRadios.forEach((radio) => {
@@ -203,7 +203,7 @@ paymentRadios.forEach((radio) => {
 const orderSubmit = document.querySelector(".order-submit");
 orderSubmit.addEventListener("click", () => {
   alert("Ваше замовлення відправлене! Ми зв’яжемося з вами для підтвердження.");
-  orderPopup.classList.remove("active");
+  orderPopup$1.classList.remove("active");
 });
 class DynamicAdapt {
   constructor() {
@@ -355,4 +355,246 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const itemsPerPage = 15;
+  const items = document.querySelectorAll(".catalog__row .catalog__item");
+  const paginationContainer = document.querySelector(".catalog__pagination");
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  let currentPage = 1;
+  function showPage(page) {
+    items.forEach((item, index) => {
+      item.style.display = "none";
+      const start = (page - 1) * itemsPerPage;
+      const end = page * itemsPerPage;
+      if (index >= start && index < end) {
+        item.style.display = "block";
+      }
+    });
+    document.querySelectorAll(".pagination-btn").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    const activeBtn = document.querySelector(`.pagination-btn[data-page="${page}"]`);
+    if (activeBtn) activeBtn.classList.add("active");
+  }
+  function createPagination() {
+    paginationContainer.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("button");
+      button.classList.add("pagination-btn");
+      if (i === currentPage) button.classList.add("active");
+      button.dataset.page = i;
+      button.textContent = i;
+      button.addEventListener("click", () => {
+        currentPage = i;
+        showPage(currentPage);
+      });
+      paginationContainer.appendChild(button);
+    }
+  }
+  if (totalPages > 1) {
+    createPagination();
+    showPage(currentPage);
+  }
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const itemsPerPage = 6;
+  const items = document.querySelectorAll(".blog__row .blog__column");
+  const paginationContainer = document.querySelector(".blog__pagination");
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  let currentPage = 1;
+  function showPage(page) {
+    items.forEach((item, index) => {
+      item.style.display = "none";
+      const start = (page - 1) * itemsPerPage;
+      const end = page * itemsPerPage;
+      if (index >= start && index < end) {
+        item.style.display = "block";
+      }
+    });
+    document.querySelectorAll(".blog-pagination-btn").forEach((btn) => {
+      btn.classList.remove("active");
+    });
+    const activeBtn = document.querySelector(`.blog-pagination-btn[data-page="${page}"]`);
+    if (activeBtn) activeBtn.classList.add("active");
+  }
+  function createPagination() {
+    paginationContainer.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("button");
+      button.classList.add("blog-pagination-btn");
+      if (i === currentPage) button.classList.add("active");
+      button.dataset.page = i;
+      button.textContent = i;
+      button.addEventListener("click", () => {
+        currentPage = i;
+        showPage(currentPage);
+      });
+      paginationContainer.appendChild(button);
+    }
+  }
+  if (totalPages > 1) {
+    createPagination();
+    showPage(currentPage);
+  }
+});
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = tab.dataset.tab;
+    document.querySelectorAll(".tab").forEach((btn) => btn.classList.remove("active"));
+    document.querySelectorAll(".tab-pane").forEach((pane) => pane.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(target).classList.add("active");
+  });
+});
+function activateOptions(selector) {
+  document.querySelectorAll(selector).forEach((group) => {
+    group.addEventListener("click", (e) => {
+      if (e.target.tagName === "BUTTON") {
+        group.querySelectorAll("button").forEach((btn) => btn.classList.remove("active"));
+        e.target.classList.add("active");
+      }
+    });
+  });
+}
+activateOptions(".option__colors");
+activateOptions(".option__sizes");
+const mainImage = document.querySelector(".product__main img");
+const thumbs = document.querySelectorAll(".product__thumbs img");
+thumbs.forEach((thumb) => {
+  thumb.addEventListener("click", () => {
+    mainImage.src = thumb.src;
+    thumbs.forEach((t) => t.classList.remove("active"));
+    thumb.classList.add("active");
+  });
+});
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".btn-buy, .add-to-cart");
+  if (!btn) return;
+  const product = {
+    id: btn.dataset.id,
+    title: btn.dataset.title,
+    price: parseFloat(btn.dataset.price.replace(/\s/g, "")),
+    // видаляємо пробіли
+    image: btn.dataset.image,
+    quantity: 1
+  };
+  addToCart(product);
+});
+function addToCart(product) {
+  const existing = cart.find((item) => item.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push(product);
+  }
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartPopup();
+}
+function renderCartPopup() {
+  const container = document.querySelector(".cart-items");
+  const totalEl = document.querySelector(".cart-total");
+  const countEl = document.querySelector(".header__count");
+  container.innerHTML = "";
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Кошик порожній</p>";
+    totalEl.textContent = "Всього: 0 ₴";
+    if (countEl) countEl.textContent = 0;
+    return;
+  }
+  let total = 0;
+  let totalCount = 0;
+  cart.forEach((item) => {
+    total += item.price * item.quantity;
+    totalCount += item.quantity;
+    const div = document.createElement("div");
+    div.classList.add("cart-item");
+    div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" class="cart-item__img">
+            <div class="cart-item__info">
+                <span class="cart-item__title">${item.title}</span>
+                <span class="cart-item__quantity">× ${item.quantity}</span>
+                <span class="cart-item__price">${item.price} ₴ / шт</span>
+            </div>
+            <strong class="cart-item__total">${item.price * item.quantity} ₴</strong>
+            <button class="remove-item" data-id="${item.id}">✖</button>
+        `;
+    container.appendChild(div);
+  });
+  totalEl.textContent = `Всього: ${total} ₴`;
+  if (countEl) countEl.textContent = totalCount;
+  bindRemoveButtons();
+}
+function bindRemoveButtons() {
+  document.querySelectorAll(".remove-item").forEach((btn) => {
+    btn.onclick = () => {
+      cart = cart.filter((item) => item.id !== btn.dataset.id);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCartPopup();
+    };
+  });
+}
+document.addEventListener("DOMContentLoaded", renderCartPopup);
+const orderPopup = document.querySelector(".order-popup");
+const orderItemsContainer = document.querySelector(".order-items");
+const orderTotalEl = document.querySelector(".order-total__sum");
+const orderConfirmBtn = document.querySelector(".order-confirm");
+const orderCloseBtn = document.querySelector(".order-popup__close");
+const orderForm = document.querySelector(".order-form");
+orderCloseBtn.addEventListener("click", () => {
+  orderPopup.classList.remove("open");
+});
+document.querySelector(".cart-checkout").addEventListener("click", (e) => {
+  e.preventDefault();
+  renderOrderPopup(cart);
+  orderPopup.classList.add("open");
+});
+document.querySelectorAll(".item-catalog__btn:not(.btn-buy)").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    const item = btn.closest(".item-catalog");
+    const title = item.querySelector(".item-catalog__title").textContent;
+    const price = parseFloat(item.querySelector(".item-catalog__price span").textContent.replace(/\s/g, ""));
+    const image = item.querySelector(".item-catalog__img img").src;
+    const quickCart = [
+      {
+        id: "quick_" + Date.now(),
+        title,
+        price,
+        quantity: 1,
+        image
+      }
+    ];
+    renderOrderPopup(quickCart);
+    orderPopup.classList.add("open");
+  });
+});
+function renderOrderPopup(products) {
+  orderItemsContainer.innerHTML = "";
+  let total = 0;
+  products.forEach((item) => {
+    total += item.price * item.quantity;
+    const div = document.createElement("div");
+    div.classList.add("order-item");
+    div.style.display = "flex";
+    div.style.alignItems = "center";
+    div.style.marginBottom = "10px";
+    div.innerHTML = `
+            <img src="${item.image}" alt="${item.title}" style="width:50px;height:50px;object-fit:cover;margin-right:10px;border-radius:5px;">
+            <span style="flex:1;">${item.title} × ${item.quantity}</span>
+            <strong>${item.price * item.quantity} ₴</strong>
+        `;
+    orderItemsContainer.appendChild(div);
+  });
+  orderTotalEl.textContent = `${total} ₴`;
+}
+orderConfirmBtn.addEventListener("click", () => {
+  if (!orderForm.checkValidity()) {
+    alert("Заповніть всі поля!");
+    return;
+  }
+  alert("Дякуємо! Ваше замовлення прийнято.");
+  orderPopup.classList.remove("open");
+  orderForm.reset();
 });

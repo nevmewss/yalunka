@@ -6,9 +6,9 @@
 		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
 		<title>Каталог</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477936867"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477936867">
-		<link rel="stylesheet" crossorigin="" href="./css/catalog.min.css?v=1756477936867">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1756540713818"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756540713818">
+		<link rel="stylesheet" crossorigin="" href="./css/catalog.min.css?v=1756540713818">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -82,7 +82,7 @@
 												<a href="" class="menu__link">Блог</a>
 											</li>
 											<li class="menu__item">
-												<a href="" class="menu__link">Фотогалерея</a>
+												<a href="index.html#gallery" class="menu__link">Фотогалерея</a>
 											</li>
 											<li class="menu__item">
 												<a href="" class="menu__link">Оплата та доставка</a>
@@ -105,11 +105,6 @@
 									</a>
 								</div>
 								<div class="search-results" id="searchResults"></div>
-								<a href="#" class="top-header__icon top-header__person">
-									<picture>
-										<img alt="Cabinet" src="./assets/img/header/person.webp">
-									</picture>
-								</a>
 								<a href="#" class="top-header__icon top-header__cart cart-btn">
 									<picture>
 										<img alt="Cart" src="./assets/img/header/cart.webp">
@@ -129,25 +124,9 @@
 				<div class="cart-popup__content">
 					<button class="cart-popup__close">&times;</button>
 					<h2>Ваша корзина</h2>
-					<div class="cart-items">
-						<div class="cart-item">
-							<span>Гірлянда LED 10м</span>
-							<strong>350 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Набір куль 20 шт.</span>
-							<strong>480 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Свічки ароматичні</span>
-							<strong>120 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-					</div>
+					<div class="cart-items"><!-- Тут будуть товари з JS --></div>
 					<div class="cart-footer">
-						<span class="cart-total">Всього: 950 ₴</span>
+						<span class="cart-total">Всього: 0 ₴</span>
 						<button class="cart-checkout">Оформити замовлення</button>
 					</div>
 				</div>
@@ -157,33 +136,41 @@
 				<div class="order-popup__content">
 					<button class="order-popup__close">&times;</button>
 					<h2>Оформлення замовлення</h2>
-					<!-- Способи оплати -->
-					<div class="order-section">
-						<h3>Спосіб оплати:</h3>
+					<!-- Список товарів -->
+					<div class="order-items"><!-- Тут JS динамічно вставить товари з кошика --></div>
+					<!-- Підсумок -->
+					<div class="order-total">
+						Всього до сплати:
+						<span class="order-total__sum">0 ₴</span>
+					</div>
+					<!-- Форма для відправки -->
+					<form class="order-form">
 						<label>
-							<input type="radio" name="payment" value="cod" checked>
-							При отриманні
+							ПІБ:
+							<input type="text" name="name" required placeholder="Ім'я Прізвище">
 						</label>
 						<label>
-							<input type="radio" name="payment" value="card">
-							На картку
+							Телефон:
+							<input type="tel" name="phone" required placeholder="+380">
 						</label>
-						<p class="payment-info">Без передоплати на картку замовлення не буде відправлено.</p>
+						<label>
+							Місто:
+							<input type="text" name="city" required placeholder="Місто">
+						</label>
+						<label>
+							Відділення НП:
+							<input type="text" name="branch" required placeholder="№ відділення">
+						</label>
+					</form>
+					<!-- Інформація про оплату -->
+					<div class="order-payment">
+						Оплата на картку:
+						<br>
+						<strong>4444 4444 4444 4444</strong>
+						<br>
+						Після оплати замовлення буде оброблено.
 					</div>
-					<!-- Дані для відправки -->
-					<div class="order-section">
-						<h3>Дані для відправки:</h3>
-						<input type="text" name="name" placeholder="ПІБ" required>
-						<input type="tel" name="phone" placeholder="Телефон" required>
-						<input type="text" name="city" placeholder="Місто" required>
-						<input type="text" name="branch" placeholder="Відділення Нової Пошти" required>
-					</div>
-					<!-- Дані картки -->
-					<div class="order-section order-card" style="display: none">
-						<h3>Дані картки для оплати:</h3>
-						<h3>4444 4444 4444 4444</h3>
-					</div>
-					<button class="order-submit">Підтвердити замовлення</button>
+					<button class="order-confirm">Підтвердити замовлення</button>
 				</div>
 			</div>
 			<main class="page">
@@ -282,17 +269,16 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 1</h3>
 												<div class="item-catalog__price">
 													<span>1 000</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="1" data-title="Товар 1" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 									<a href="#" class="catalog__item item-catalog">
@@ -305,17 +291,16 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 2</h3>
 												<div class="item-catalog__price">
-													<span>1 000</span>
+													<span>1 200</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="2" data-title="Товар 2" data-price="1200" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 									<a href="#" class="catalog__item item-catalog">
@@ -328,17 +313,16 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 3</h3>
 												<div class="item-catalog__price">
 													<span>1 000</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="3" data-title="Товар 3" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 									<a href="#" class="catalog__item item-catalog">
@@ -351,17 +335,16 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 4</h3>
 												<div class="item-catalog__price">
 													<span>1 000</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="4" data-title="Товар 4" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 									<a href="#" class="catalog__item item-catalog">
@@ -374,17 +357,16 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 5</h3>
 												<div class="item-catalog__price">
 													<span>1 000</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="5" data-title="Товар 5" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 									<a href="#" class="catalog__item item-catalog">
@@ -397,20 +379,20 @@
 										</div>
 										<div class="item-catalog__nav">
 											<div class="item-catalog__info">
-												<h3 class="item-catalog__title">Назва товару</h3>
+												<h3 class="item-catalog__title">Товар 6</h3>
 												<div class="item-catalog__price">
 													<span>1 000</span>
 													грн
 												</div>
 											</div>
-											<button class="item-catalog__cart">
-												<picture>
-													<img alt="Додати в корзину" src="./assets/img/header/cart.webp">
-												</picture>
-											</button>
+											<div class="item-catalog__buttons">
+												<button class="item-catalog__btn">Замовити в один клік</button>
+												<button data-id="6" data-title="Товар 6" data-price="1000" data-image="assets/img/catalog/01.png" class="item-catalog__btn btn-buy">Купити</button>
+											</div>
 										</div>
 									</a>
 								</div>
+								<div class="catalog__pagination"></div>
 							</div>
 						</div>
 					</div>

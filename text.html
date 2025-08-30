@@ -6,8 +6,8 @@
 		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
 		<title>Текстова сторінка</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477936864"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477936864">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1756540713814"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756540713814">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -81,7 +81,7 @@
 												<a href="" class="menu__link">Блог</a>
 											</li>
 											<li class="menu__item">
-												<a href="" class="menu__link">Фотогалерея</a>
+												<a href="index.html#gallery" class="menu__link">Фотогалерея</a>
 											</li>
 											<li class="menu__item">
 												<a href="" class="menu__link">Оплата та доставка</a>
@@ -104,11 +104,6 @@
 									</a>
 								</div>
 								<div class="search-results" id="searchResults"></div>
-								<a href="#" class="top-header__icon top-header__person">
-									<picture>
-										<img alt="Cabinet" src="./assets/img/header/person.webp">
-									</picture>
-								</a>
 								<a href="#" class="top-header__icon top-header__cart cart-btn">
 									<picture>
 										<img alt="Cart" src="./assets/img/header/cart.webp">
@@ -128,25 +123,9 @@
 				<div class="cart-popup__content">
 					<button class="cart-popup__close">&times;</button>
 					<h2>Ваша корзина</h2>
-					<div class="cart-items">
-						<div class="cart-item">
-							<span>Гірлянда LED 10м</span>
-							<strong>350 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Набір куль 20 шт.</span>
-							<strong>480 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Свічки ароматичні</span>
-							<strong>120 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-					</div>
+					<div class="cart-items"><!-- Тут будуть товари з JS --></div>
 					<div class="cart-footer">
-						<span class="cart-total">Всього: 950 ₴</span>
+						<span class="cart-total">Всього: 0 ₴</span>
 						<button class="cart-checkout">Оформити замовлення</button>
 					</div>
 				</div>
@@ -156,33 +135,41 @@
 				<div class="order-popup__content">
 					<button class="order-popup__close">&times;</button>
 					<h2>Оформлення замовлення</h2>
-					<!-- Способи оплати -->
-					<div class="order-section">
-						<h3>Спосіб оплати:</h3>
+					<!-- Список товарів -->
+					<div class="order-items"><!-- Тут JS динамічно вставить товари з кошика --></div>
+					<!-- Підсумок -->
+					<div class="order-total">
+						Всього до сплати:
+						<span class="order-total__sum">0 ₴</span>
+					</div>
+					<!-- Форма для відправки -->
+					<form class="order-form">
 						<label>
-							<input type="radio" name="payment" value="cod" checked>
-							При отриманні
+							ПІБ:
+							<input type="text" name="name" required placeholder="Ім'я Прізвище">
 						</label>
 						<label>
-							<input type="radio" name="payment" value="card">
-							На картку
+							Телефон:
+							<input type="tel" name="phone" required placeholder="+380">
 						</label>
-						<p class="payment-info">Без передоплати на картку замовлення не буде відправлено.</p>
+						<label>
+							Місто:
+							<input type="text" name="city" required placeholder="Місто">
+						</label>
+						<label>
+							Відділення НП:
+							<input type="text" name="branch" required placeholder="№ відділення">
+						</label>
+					</form>
+					<!-- Інформація про оплату -->
+					<div class="order-payment">
+						Оплата на картку:
+						<br>
+						<strong>4444 4444 4444 4444</strong>
+						<br>
+						Після оплати замовлення буде оброблено.
 					</div>
-					<!-- Дані для відправки -->
-					<div class="order-section">
-						<h3>Дані для відправки:</h3>
-						<input type="text" name="name" placeholder="ПІБ" required>
-						<input type="tel" name="phone" placeholder="Телефон" required>
-						<input type="text" name="city" placeholder="Місто" required>
-						<input type="text" name="branch" placeholder="Відділення Нової Пошти" required>
-					</div>
-					<!-- Дані картки -->
-					<div class="order-section order-card" style="display: none">
-						<h3>Дані картки для оплати:</h3>
-						<h3>4444 4444 4444 4444</h3>
-					</div>
-					<button class="order-submit">Підтвердити замовлення</button>
+					<button class="order-confirm">Підтвердити замовлення</button>
 				</div>
 			</div>
 			<main class="page">

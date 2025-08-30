@@ -6,8 +6,8 @@
 		<link rel="preload" href="./assets/fonts/helvetica_regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 		<link rel="shortcut icon" href="assets/img/favicon.ico">
 		<title>Товар</title>
-		<script type="module" crossorigin="" src="./js/app.min.js?v=1756477936865"></script>
-		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756477936865">
+		<script type="module" crossorigin="" src="./js/app.min.js?v=1756540713815"></script>
+		<link rel="stylesheet" crossorigin="" href="./css/app.min.css?v=1756540713815">
 	</head>
 	<body>
 		<div class="wrapper">
@@ -81,7 +81,7 @@
 												<a href="" class="menu__link">Блог</a>
 											</li>
 											<li class="menu__item">
-												<a href="" class="menu__link">Фотогалерея</a>
+												<a href="index.html#gallery" class="menu__link">Фотогалерея</a>
 											</li>
 											<li class="menu__item">
 												<a href="" class="menu__link">Оплата та доставка</a>
@@ -104,11 +104,6 @@
 									</a>
 								</div>
 								<div class="search-results" id="searchResults"></div>
-								<a href="#" class="top-header__icon top-header__person">
-									<picture>
-										<img alt="Cabinet" src="./assets/img/header/person.webp">
-									</picture>
-								</a>
 								<a href="#" class="top-header__icon top-header__cart cart-btn">
 									<picture>
 										<img alt="Cart" src="./assets/img/header/cart.webp">
@@ -128,25 +123,9 @@
 				<div class="cart-popup__content">
 					<button class="cart-popup__close">&times;</button>
 					<h2>Ваша корзина</h2>
-					<div class="cart-items">
-						<div class="cart-item">
-							<span>Гірлянда LED 10м</span>
-							<strong>350 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Набір куль 20 шт.</span>
-							<strong>480 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-						<div class="cart-item">
-							<span>Свічки ароматичні</span>
-							<strong>120 ₴</strong>
-							<button class="remove-item">✖</button>
-						</div>
-					</div>
+					<div class="cart-items"><!-- Тут будуть товари з JS --></div>
 					<div class="cart-footer">
-						<span class="cart-total">Всього: 950 ₴</span>
+						<span class="cart-total">Всього: 0 ₴</span>
 						<button class="cart-checkout">Оформити замовлення</button>
 					</div>
 				</div>
@@ -156,67 +135,172 @@
 				<div class="order-popup__content">
 					<button class="order-popup__close">&times;</button>
 					<h2>Оформлення замовлення</h2>
-					<!-- Способи оплати -->
-					<div class="order-section">
-						<h3>Спосіб оплати:</h3>
+					<!-- Список товарів -->
+					<div class="order-items"><!-- Тут JS динамічно вставить товари з кошика --></div>
+					<!-- Підсумок -->
+					<div class="order-total">
+						Всього до сплати:
+						<span class="order-total__sum">0 ₴</span>
+					</div>
+					<!-- Форма для відправки -->
+					<form class="order-form">
 						<label>
-							<input type="radio" name="payment" value="cod" checked>
-							При отриманні
+							ПІБ:
+							<input type="text" name="name" required placeholder="Ім'я Прізвище">
 						</label>
 						<label>
-							<input type="radio" name="payment" value="card">
-							На картку
+							Телефон:
+							<input type="tel" name="phone" required placeholder="+380">
 						</label>
-						<p class="payment-info">Без передоплати на картку замовлення не буде відправлено.</p>
+						<label>
+							Місто:
+							<input type="text" name="city" required placeholder="Місто">
+						</label>
+						<label>
+							Відділення НП:
+							<input type="text" name="branch" required placeholder="№ відділення">
+						</label>
+					</form>
+					<!-- Інформація про оплату -->
+					<div class="order-payment">
+						Оплата на картку:
+						<br>
+						<strong>4444 4444 4444 4444</strong>
+						<br>
+						Після оплати замовлення буде оброблено.
 					</div>
-					<!-- Дані для відправки -->
-					<div class="order-section">
-						<h3>Дані для відправки:</h3>
-						<input type="text" name="name" placeholder="ПІБ" required>
-						<input type="tel" name="phone" placeholder="Телефон" required>
-						<input type="text" name="city" placeholder="Місто" required>
-						<input type="text" name="branch" placeholder="Відділення Нової Пошти" required>
-					</div>
-					<!-- Дані картки -->
-					<div class="order-section order-card" style="display: none">
-						<h3>Дані картки для оплати:</h3>
-						<h3>4444 4444 4444 4444</h3>
-					</div>
-					<button class="order-submit">Підтвердити замовлення</button>
+					<button class="order-confirm">Підтвердити замовлення</button>
 				</div>
 			</div>
-			<main class="page">
-				<div class="page__nav">
-					<div class="page__container">
-						<a href="index.html" class="page__prev">Головна /</a>
-						<a href="index.html" class="page__prev">Каталог /</a>
-						<span class="page__current">Товар</span>
+			<main class="page product-page">
+				<!-- Хлібні крихти -->
+				<nav class="breadcrumbs">
+					<div class="container">
+						<a href="index.html">Головна</a>
+						/
+						<a href="catalog.html">Каталог</a>
+						/
+						<span>Ялинка "Нордман" 2.1 м</span>
 					</div>
-				</div>
-				<section class="page__product product">
-					<div class="product__container">
-						<div class="product__img">
+				</nav>
+				<!-- Основна секція продукту -->
+				<section class="product">
+					<div class="container product__container">
+						<!-- Галерея -->
+						<div class="product__gallery">
+							<div class="product__main">
+								<picture>
+									<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+									<img alt="Ялинка штучна Нордман" src="./assets/img/placeholder.webp">
+								</picture>
+							</div>
+							<div class="product__thumbs">
+								<picture>
+									<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+									<img alt="Фото 1" src="./assets/img/placeholder.webp">
+								</picture>
+								<picture>
+									<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+									<img alt="Фото 2" src="./assets/img/placeholder.webp">
+								</picture>
+								<picture>
+									<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+									<img alt="Фото 3" src="./assets/img/placeholder.webp">
+								</picture>
+							</div>
+						</div>
+						<!-- Інформація -->
+						<div class="product__info">
+							<h1 class="product__title">Ялинка штучна "Нордман" 2.1 м</h1>
+							<div class="product__price">3 500 грн</div>
+							<!-- Опції -->
+							<div class="product__options">
+								<div class="option">
+									<label>Колір:</label>
+									<div class="option__colors">
+										<button class="color active" style="background: #0f3"></button>
+										<button class="color" style="background: #093"></button>
+										<button class="color" style="background: #333"></button>
+									</div>
+								</div>
+								<div class="option">
+									<label>Висота:</label>
+									<div class="option__sizes">
+										<button class="size">1.5 м</button>
+										<button class="size">1.8 м</button>
+										<button class="size active">2.1 м</button>
+									</div>
+								</div>
+							</div>
+							<!-- Дія -->
+							<button data-id="nordman-21" data-title="Ялинка штучна Нордман 2.1 м" data-price="3500" data-image="assets/img/placeholder.png" class="button add-to-cart">Додати в кошик</button>
+							<!-- Короткі характеристики -->
+							<ul class="product__specs">
+								<li>
+									<strong>Матеріал:</strong>
+									ПВХ преміум
+								</li>
+								<li>
+									<strong>Діаметр основи:</strong>
+									130 см
+								</li>
+								<li>
+									<strong>Кількість гілок:</strong>
+									1050
+								</li>
+								<li>
+									<strong>Виробник:</strong>
+									Україна
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- Таби -->
+				<section class="product-tabs container">
+					<div class="tabs__nav">
+						<button class="tab active" data-tab="description">Опис</button>
+						<button class="tab" data-tab="specs">Характеристики</button>
+					</div>
+					<div class="tabs__content">
+						<div class="tab-pane active" id="description">Ця штучна ялинка створює затишну атмосферу Нового року...</div>
+						<div class="tab-pane" id="specs">
+							<ul>
+								<li>Висота: 2.1 м</li>
+								<li>Матеріал: ПВХ преміум</li>
+								<li>Кількість гілок: 1050</li>
+								<li>Основa: металева</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<!-- Рекомендовані товари -->
+				<section class="related container">
+					<h2>Схожі товари</h2>
+					<div class="related__grid">
+						<div class="related__item">
 							<picture>
 								<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
 								<img alt="Товар" src="./assets/img/placeholder.webp">
 							</picture>
+							<div class="title">Ялинка "Сніжна" 1.8 м</div>
+							<div class="price">2 800 грн</div>
 						</div>
-						<div class="product__content">
-							<h1 class="product__title">Ялинка штучна "Нордман" 2.1 м</h1>
-							<div class="product__price">3 500 грн</div>
-							<div class="product__descr">
-								Ялинка штучна "Нордман" 2.1 м - це ідеальний вибір для створення святкової атмосфери у вашому домі
-                    чи офісі. Виготовлена з високоякісного матеріалу, ця ялинка має реалістичний вигляд та текстуру, що
-                    нагадує справжню ялинку. Висота 2.1 метра робить її достатньо великою, щоб стати центральним
-                    елементом вашого святкового декору, але при цьому вона не займе надто багато місця. Ялинка оснащена
-                    міцною основою, що забезпечує стабільність і безпеку. Вона легко збирається і розбирається, що
-                    робить її зручною для зберігання поза сезоном. Гілки ялинки густі та пишні, що дозволяє рівномірно
-                    розподілити прикраси та вогники, створюючи чарівний вигляд. Незалежно від того, чи плануєте ви
-                    прикрасити її класичними кульками та гірляндами, чи сучасними декоративними елементами, ця ялинка
-                    стане чудовим фоном для вашої творчості. Оберіть ялинку штучну "Нордман" 2.1 м і насолоджуйтеся
-                    святковим настроєм без клопоту з доглядом за живою рослиною.
-							</div>
-							<button class="product__button button">Додати в кошик</button>
+						<div class="related__item">
+							<picture>
+								<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+								<img alt="Товар" src="./assets/img/placeholder.webp">
+							</picture>
+							<div class="title">Гірлянда святкова 10 м</div>
+							<div class="price">750 грн</div>
+						</div>
+						<div class="related__item">
+							<picture>
+								<source media="(max-width: 600px)" srcset="./assets/img/placeholder-600.webp" type="image/webp">
+								<img alt="Товар" src="./assets/img/placeholder.webp">
+							</picture>
+							<div class="title">Комплект прикрас</div>
+							<div class="price">1 200 грн</div>
 						</div>
 					</div>
 				</section>
